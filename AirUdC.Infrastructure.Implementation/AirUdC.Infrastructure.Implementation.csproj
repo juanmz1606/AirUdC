@@ -92,6 +92,11 @@
     <Compile Include="DataModel\Reservation.cs">
       <DependentUpon>DataModelCore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Implementation\Parameters\CityImplementationInfrastructure.cs" />
+    <Compile Include="Implementation\Parameters\CountryImplementationInfrastructure.cs" />
+    <Compile Include="Mappers\BaseMapperInfrastructure.cs" />
+    <Compile Include="Mappers\Parameters\CityMapperInfrastructure.cs" />
+    <Compile Include="Mappers\Parameters\CountryMapperInfrastructure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,5 +133,6 @@
       <Name>AirUdC.Infastructure.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
