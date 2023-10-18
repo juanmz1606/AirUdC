@@ -92,6 +92,25 @@ namespace AirUdC.Infrastructure.Implementation.Implementation.Parameters
                 return mapper.MapperT1toT2(records);
             }
         }
+        /// <summary>
+        /// Metodo para obtener todos los registros de City en la base de datos por Id de pais
+        /// </summary>
+        /// <param name="countryId">Id del pais</param>
+        /// <returns>Lista de ciudades</returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+
+        public IEnumerable<CityDbModel> GetAllRecordsByCountryId(int countryId)
+        {
+            using (Core_DBEntities db = new Core_DBEntities())
+            {
+                var records = (from c in db.City
+                               where c.CountryId == countryId
+                               select c);
+
+                CityMapperInfrastructure mapper = new CityMapperInfrastructure();
+                return mapper.MapperT1toT2(records);
+            }
+        }
 
         /// <summary>
         /// 

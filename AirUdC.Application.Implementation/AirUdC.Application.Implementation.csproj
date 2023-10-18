@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\Parameters\CityImplementationApplication.cs" />
+    <Compile Include="Implementation\Parameters\CountryImplementationApplication.cs" />
+    <Compile Include="Mappers\MapperBaseApplication.cs" />
+    <Compile Include="Mappers\Parameters\CityMapperApplication.cs" />
+    <Compile Include="Mappers\Parameters\CountryMapperApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +57,11 @@
       <Project>{333c6949-647d-4100-b041-79f8326c562f}</Project>
       <Name>AirUdC.Infastructure.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AirUdC.Infrastructure.Implementation\AirUdC.Infrastructure.Implementation.csproj">
+      <Project>{A402F729-E123-4E18-B530-ACF7AEC81764}</Project>
+      <Name>AirUdC.Infrastructure.Implementation</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
