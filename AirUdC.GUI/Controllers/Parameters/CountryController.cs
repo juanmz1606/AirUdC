@@ -3,8 +3,6 @@ using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.Application.Implementation.Implementation.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.GUI.Models;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
