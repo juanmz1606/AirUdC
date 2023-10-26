@@ -22,7 +22,7 @@ namespace AirUdC.Infrastructure.Implementation.Implementation.Parameters
             {
                 using (Core_DBEntities db = new Core_DBEntities())
                 {
-                    if (db.City.Where(x => x.CityName.Equals(record.Name)).Count() == 0)
+                    if (!db.City.Any(x => x.CityName.Equals(record.Name)))
                     {
                         CityMapperInfrastructure mapper = new CityMapperInfrastructure();
                         City dbRecord = mapper.MapperT2toT1(record);

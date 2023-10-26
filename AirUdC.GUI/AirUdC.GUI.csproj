@@ -171,9 +171,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Parameters\CityController.cs" />
+    <Compile Include="Controllers\Parameters\CountryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\MapperBaseGUI.cs" />
+    <Compile Include="Mappers\Parameters\CityMapperGUI.cs" />
+    <Compile Include="Mappers\Parameters\CountryMapperGUI.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Parameters\CityModel.cs" />
     <Compile Include="Models\Parameters\CountryModel.cs" />
@@ -253,10 +258,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\City\Details.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Parameters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -289,6 +303,10 @@
     <ProjectReference Include="..\AirUdC.Application.Contracts\AirUdC.Application.Contracts.csproj">
       <Project>{8aaf5c84-d614-4c02-a8ca-06880d6f0971}</Project>
       <Name>AirUdC.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AirUdC.Application.Implementation\AirUdC.Application.Implementation.csproj">
+      <Project>{68118B46-FDCF-4A13-A866-D2E0AD540A0E}</Project>
+      <Name>AirUdC.Application.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

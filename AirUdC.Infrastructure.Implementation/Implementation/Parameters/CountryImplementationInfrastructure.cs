@@ -22,7 +22,7 @@ namespace AirUdC.Infrastructure.Implementation.Implementation.Parameters
             {
                 using (Core_DBEntities db = new Core_DBEntities())
                 {
-                    if (db.Country.Where(x => x.CountryName.Equals(record.Name)).Count() == 0)
+                    if (!db.Country.Any(x => x.CountryName.Equals(record.Name)))
                     {
                         CountryMapperInfrastructure mapper = new CountryMapperInfrastructure();
                         Country dbRecord = mapper.MapperT2toT1(record);
