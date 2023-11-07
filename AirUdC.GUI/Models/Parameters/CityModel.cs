@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace AirUdC.GUI.Models
 {
@@ -13,5 +14,7 @@ namespace AirUdC.GUI.Models
         public string Name { get; set; }
         [Required]
         public CountryModel Country { get; set; }
+
+        public IEnumerable<CountryModel> CountryList { get; set; }
     }
 }

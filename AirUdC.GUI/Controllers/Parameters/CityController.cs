@@ -3,6 +3,9 @@ using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.Application.Implementation.Implementation.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.GUI.Models;
+using AirUdC.GUI.Models.ReportModels;
+using Microsoft.Reporting.WebForms;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 
@@ -11,6 +14,7 @@ namespace AirUdC.GUI.Controllers.Parameters
     public class CityController : Controller
     {
         private ICityApplication app = new CityImplementationApplication();
+        private ICountryApplication countryApp = new CountryImplementationApplication();
 
         private CityMapperGUI mapper = new CityMapperGUI();
 
@@ -18,7 +22,7 @@ namespace AirUdC.GUI.Controllers.Parameters
         public ActionResult Index(string filter = "")
         {
             var list = mapper.MapperT1toT2(app.GetAllRecords(filter));
-            return View();
+            return View(list);
         }
 
         // GET: City/Details/5
@@ -39,7 +43,15 @@ namespace AirUdC.GUI.Controllers.Parameters
         // GET: City/Create
         public ActionResult Create()
         {
-            return View();
+            CityModel model = new CityModel();
+            FillListForView(model);
+            return View(model);
+        }
+
+        private void FillListForView(CityModel model)
+        {
+            CountryMapperGUI countryMapper = new CountryMapperGUI();
+            model.CountryList = countryMapper.MapperT1toT2(countryApp.GetAllRecords(string.Empty));
         }
 
         // POST: City/Create
@@ -47,8 +59,9 @@ namespace AirUdC.GUI.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Country")] CityModel cityModel)
+        public ActionResult Create(CityModel cityModel)
         {
+            ModelState.Remove("Country.Name");
             if (ModelState.IsValid)
             {
                 CityDTO cityDTO = mapper.MapperT2toT1(cityModel);
@@ -71,6 +84,7 @@ namespace AirUdC.GUI.Controllers.Parameters
             {
                 return HttpNotFound();
             }
+            FillListForView(cityModel);
             return View(cityModel);
         }
 
@@ -79,8 +93,9 @@ namespace AirUdC.GUI.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Country")] CityModel cityModel)
+        public ActionResult Edit(CityModel cityModel)
         {
+            ModelState.Remove("Country.Name");
             if (ModelState.IsValid)
             {
                 CityDTO cityDTO = mapper.MapperT2toT1(cityModel);
@@ -112,6 +127,51 @@ namespace AirUdC.GUI.Controllers.Parameters
         {
             app.DeleteRecord(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GenerateReport(string format = "PDF")
+        {
+            var list = app.GetAllRecords(string.Empty);
+            CityMapperGUI cityMapperGUI = new CityMapperGUI();
+            List<CitiesByCountryReportModel> recordsList = new List<CitiesByCountryReportModel>();
+
+            foreach (var city in list)
+            {
+                recordsList.Add(
+                    new CitiesByCountryReportModel
+                    {
+                        Id = city.Id.ToString(),
+                        Name = city.Name,
+                        CountryId = city.Country.Id.ToString(),
+                        CountryName = city.Country.Name
+                    });
+            }
+
+            string reportPath = Server.MapPath("~/Reports/RdlcFiles/CitiesByCountryReport.rdlc");
+            LocalReport lr = new LocalReport();
+
+            lr.ReportPath = reportPath;
+            lr.EnableHyperlinks = true;
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            string mimeType, encoding, fileNameExtension;
+
+            ReportDataSource datasource = new ReportDataSource("CitiesByCountryDataSet", recordsList);
+            lr.DataSources.Add(datasource);
+
+            renderedBytes = lr.Render(
+                format,
+                string.Empty,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings
+                );
+
+            return File(renderedBytes, mimeType);
         }
     }
 }

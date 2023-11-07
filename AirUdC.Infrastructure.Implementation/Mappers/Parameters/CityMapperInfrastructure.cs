@@ -20,10 +20,12 @@ namespace AirUdC.Infrastructure.Implementation.Mappers.Parameters
 
         public override IEnumerable<CityDbModel> MapperT1toT2(IEnumerable<City> input)
         {
+            IList<CityDbModel> list = new List<CityDbModel>();
             foreach (var item in input)
             {
-                yield return MapperT1toT2(item);
+                list.Add(MapperT1toT2(item));
             }
+            return list;
         }
 
         public override City MapperT2toT1(CityDbModel input)
@@ -32,16 +34,18 @@ namespace AirUdC.Infrastructure.Implementation.Mappers.Parameters
             {
                 Id = input.Id,
                 CityName = input.Name,
-                Country = new CountryMapperInfrastructure().MapperT2toT1(input.Country)
+                CountryId = input.Country.Id
             };
         }
 
         public override IEnumerable<City> MapperT2toT1(IEnumerable<CityDbModel> input)
         {
+            IList<City> list = new List<City>();
             foreach (var item in input)
             {
-                yield return MapperT2toT1(item);
+                list.Add(MapperT2toT1(item));
             }
+            return list;
         }
     }
 }
