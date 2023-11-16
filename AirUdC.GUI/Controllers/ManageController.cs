@@ -16,15 +16,13 @@ namespace AirUdC.GUI.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
-        {
-        }
+        public ManageController(){}
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
+        //public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        //{
+            //UserManager = userManager;
+            //SignInManager = signInManager;
+        //}
 
         public ApplicationSignInManager SignInManager
         {
