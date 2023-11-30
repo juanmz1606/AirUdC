@@ -3,7 +3,6 @@ using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.Infastructure.Contracts.Contracts.Parameters;
 using AirUdC.Infastructure.Contracts.DbModel.Parameters;
-using AirUdC.Infrastructure.Implementation.Implementation.Parameters;
 using System.Collections.Generic;
 
 namespace AirUdC.Application.Implementation.Implementation.Parameters
@@ -11,9 +10,9 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
     public class CountryImplementationApplication : ICountryApplication
     {
         ICountryInfrastructure _countryInfrastructure;
-        public CountryImplementationApplication()
+        public CountryImplementationApplication(ICountryInfrastructure countryInfrastructure)
         {
-            this._countryInfrastructure = new CountryImplementationInfrastructure();
+            this._countryInfrastructure = countryInfrastructure;
         }
         public CountryDTO CreateRecord(CountryDTO record)
         {

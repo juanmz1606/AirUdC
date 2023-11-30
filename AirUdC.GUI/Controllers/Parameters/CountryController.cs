@@ -1,6 +1,5 @@
 ﻿using AirUdC.Application.Contracts.Contracts.Parameters;
 using AirUdC.Application.Contracts.DTO.Parameters;
-using AirUdC.Application.Implementation.Implementation.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.GUI.Models;
 using System.Net;
@@ -10,9 +9,14 @@ namespace AirUdC.GUI.Controllers.Parameters
 {
     public class CountryController : Controller
     {
-        private ICountryApplication app = new CountryImplementationApplication();
+        private ICountryApplication app;
 
         private CountryMapperGUI mapper = new CountryMapperGUI();
+
+        public CountryController(ICountryApplication countryApplication)
+        {
+            app = countryApplication;
+        }
 
         // GET: Country
         public ActionResult Index(string filter = "")

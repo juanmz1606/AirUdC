@@ -3,17 +3,16 @@ using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.Infastructure.Contracts.Contracts.Parameters;
 using AirUdC.Infastructure.Contracts.DbModel.Parameters;
-using AirUdC.Infrastructure.Implementation.Implementation.Parameters;
 using System.Collections.Generic;
 
 namespace AirUdC.Application.Implementation.Implementation.Parameters
 {
     public class CityImplementationApplication : ICityApplication
     {
-        ICityInfrastructure _countryInfrastructure;
-        public CityImplementationApplication()
+        ICityInfrastructure _cityInfrastructure;
+        public CityImplementationApplication(ICityInfrastructure cityInfrastructure)
         {
-            this._countryInfrastructure = new CityImplementationInfrastructure();
+            this._cityInfrastructure = cityInfrastructure;
         }
         /// <summary>
         /// Metodo que crea un registro de ciudad
@@ -24,7 +23,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         {
             CityMapperApplication mapper = new CityMapperApplication();
             CityDbModel mapped = mapper.MapperT2toT1(record);
-            CityDbModel created = this._countryInfrastructure.CreateRecord(mapped);
+            CityDbModel created = this._cityInfrastructure.CreateRecord(mapped);
             return mapper.MapperT1toT2(created);
         }
         /// <summary>
@@ -34,7 +33,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         /// <returns></returns>
         public int DeleteRecord(int recordId)
         {
-            int deleted = this._countryInfrastructure.DeleteRecord(recordId);
+            int deleted = this._cityInfrastructure.DeleteRecord(recordId);
             return deleted;
         }
         /// <summary>
@@ -45,7 +44,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         public IEnumerable<CityDTO> GetAllRecords(string filter)
         {
             CityMapperApplication mapper = new CityMapperApplication();
-            IEnumerable<CityDbModel> records = this._countryInfrastructure.GetAllRecords(filter);
+            IEnumerable<CityDbModel> records = this._cityInfrastructure.GetAllRecords(filter);
             return mapper.MapperT1toT2(records);
         }
         /// <summary>
@@ -57,7 +56,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         {
             CityMapperApplication mapper = new CityMapperApplication();
             IEnumerable<CityDbModel> records = 
-                this._countryInfrastructure.GetAllRecordsByCountryId(countryId);
+                this._cityInfrastructure.GetAllRecordsByCountryId(countryId);
             return mapper.MapperT1toT2(records);
         }
         /// <summary>
@@ -68,7 +67,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         public CityDTO GetRecord(int recordId)
         {
             CityMapperApplication mapper = new CityMapperApplication();
-            CityDbModel record = this._countryInfrastructure.GetRecord(recordId);
+            CityDbModel record = this._cityInfrastructure.GetRecord(recordId);
             return mapper.MapperT1toT2(record);
         }
         /// <summary>
@@ -80,7 +79,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         {
             CityMapperApplication mapper = new CityMapperApplication();
             CityDbModel mapped = mapper.MapperT2toT1(record);
-            int updated = this._countryInfrastructure.UpdateRecord(mapped);
+            int updated = this._cityInfrastructure.UpdateRecord(mapped);
             return updated;
         }
     }

@@ -13,8 +13,14 @@ namespace AirUdC.GUI.Controllers.Parameters
 {
     public class CityController : Controller
     {
-        private ICityApplication app = new CityImplementationApplication();
-        private ICountryApplication countryApp = new CountryImplementationApplication();
+        private ICityApplication app;
+        private ICountryApplication countryApp;
+
+        public CityController(ICityApplication cityApplication, ICountryApplication countryApplication)
+        {
+            app = cityApplication;
+            countryApp = countryApplication;
+        }
 
         private CityMapperGUI mapper = new CityMapperGUI();
 
