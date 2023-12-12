@@ -19,9 +19,7 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
                     @using Microsoft.AspNet.Identity
                     @if (Request.IsAuthenticated)
                     {
@@ -29,7 +27,7 @@
                         <li>@Html.ActionLink("Ciudad", "Index", "City", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Propietario", "Index", "PropertyOwner", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Tipo de Multimedia", "Index", "MultimediaType", new { area = "" }, new { @class = "nav-link" })</li>
-
+                        <li>@Html.ActionLink("Cliente", "Index", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                 </ul>
                  @Html.Partial("_LoginPartial")

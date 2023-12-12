@@ -2,8 +2,6 @@
 
 namespace AirUdC.GUI.App_Start
 {
-    using System.Reflection;
-    using System.Web.Mvc;
     using AirUdC.Application.Contracts.Contracts.Parameters;
     using AirUdC.Application.Implementation.Implementation.Parameters;
     using AirUdC.Infastructure.Contracts.Contracts.Parameters;
@@ -11,7 +9,8 @@ namespace AirUdC.GUI.App_Start
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
-    
+    using System.Web.Mvc;
+
     public static class SimpleInjectorInitializer
     {
         /// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>
@@ -35,12 +34,19 @@ namespace AirUdC.GUI.App_Start
             // container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
             container.Register<ICityInfrastructure, CityImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<ICityApplication, CityImplementationApplication>(Lifestyle.Scoped);
+
             container.Register<ICountryInfrastructure, CountryImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<ICountryApplication, CountryImplementationApplication>(Lifestyle.Scoped);
+
             container.Register<IPropertyOwnerInfrastructure, PropertyOwnerImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<IPropertyOwnerApplication, PropertyOwnerImplementationApplication>(Lifestyle.Scoped);
+
             container.Register<IMultimediaTypeInfrastructure, MultimediaTypeImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<IMultimediaTypeApplication, MultimediaTypeImplementationApplication>(Lifestyle.Scoped);
+
+            container.Register<ICustomerInfrastructure, CustomerImplementationInfrastructure>(Lifestyle.Scoped);
+            container.Register<ICustomerApplication, CustomerImplementationApplication>(Lifestyle.Scoped);
+
             container.RegisterMvcControllers();
         }
     }
