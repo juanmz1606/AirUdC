@@ -34,11 +34,13 @@ namespace AirUdC.GUI.App_Start
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
             container.Register<ICityInfrastructure, CityImplementationInfrastructure>(Lifestyle.Scoped);
-            container.Register<ICountryInfrastructure, CountryImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<ICityApplication, CityImplementationApplication>(Lifestyle.Scoped);
+            container.Register<ICountryInfrastructure, CountryImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<ICountryApplication, CountryImplementationApplication>(Lifestyle.Scoped);
             container.Register<IPropertyOwnerInfrastructure, PropertyOwnerImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<IPropertyOwnerApplication, PropertyOwnerImplementationApplication>(Lifestyle.Scoped);
+            container.Register<IMultimediaTypeInfrastructure, MultimediaTypeImplementationInfrastructure>(Lifestyle.Scoped);
+            container.Register<IMultimediaTypeApplication, MultimediaTypeImplementationApplication>(Lifestyle.Scoped);
             container.RegisterMvcControllers();
         }
     }

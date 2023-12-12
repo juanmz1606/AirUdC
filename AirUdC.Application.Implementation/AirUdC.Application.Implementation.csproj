@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\Parameters\CityImplementationApplication.cs" />
+    <Compile Include="Implementation\Parameters\MultimediaTypeImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\CountryImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\PropertyOwnerImplementationApplication.cs" />
     <Compile Include="Mappers\MapperBaseApplication.cs" />
     <Compile Include="Mappers\Parameters\CityMapperApplication.cs" />
+    <Compile Include="Mappers\Parameters\MultimediaTypeMapperApplication.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperApplication.cs" />
     <Compile Include="Mappers\Parameters\PropertyOwnerMapperApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
