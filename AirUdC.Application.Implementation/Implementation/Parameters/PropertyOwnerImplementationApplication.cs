@@ -35,7 +35,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
             return mapper.MapperT1toT2(records);
         }
 
-        public PropertyOwnerDTO GetRecord(int recordId)
+        public PropertyOwnerDTO GetRecord(long recordId)
         {
             PropertyOwnerMapperApplication mapper = new PropertyOwnerMapperApplication();
             PropertyOwnerDbModel record = this._propertyOwnerInfrastructure.GetRecord(recordId);

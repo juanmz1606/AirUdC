@@ -1,6 +1,5 @@
 ﻿using AirUdC.Application.Contracts.Contracts.Parameters;
 using AirUdC.Application.Contracts.DTO.Parameters;
-using AirUdC.Application.Implementation.Implementation.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.GUI.Models;
 using AirUdC.GUI.Models.ReportModels;

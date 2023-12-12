@@ -8,7 +8,7 @@ namespace AirUdC.Application.Contracts.Contracts.Parameters
         PropertyOwnerDTO CreateRecord(PropertyOwnerDTO record);
         int DeleteRecord(long recordId);
         int UpdateRecord(PropertyOwnerDTO record);
-        PropertyOwnerDTO GetRecord(int recordId);
+        PropertyOwnerDTO GetRecord(long recordId);
         IEnumerable<PropertyOwnerDTO> GetAllRecords(string filter);
     }
 }

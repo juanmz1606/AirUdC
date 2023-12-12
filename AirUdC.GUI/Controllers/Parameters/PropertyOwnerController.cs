@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using AirUdC.Application.Contracts.Contracts.Parameters;
-using AirUdC.Application.Implementation.Mappers.Parameters;
+﻿using AirUdC.Application.Contracts.Contracts.Parameters;
+using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.GUI.Mappers.Parameters;
 using AirUdC.GUI.Models.Parameters;
-using AirUdC.Infrastructure.Implementation.DataModel;
+using System.Net;
+using System.Web.Mvc;
 
 namespace AirUdC.GUI.Controllers.Parameters
 {
@@ -26,19 +19,20 @@ namespace AirUdC.GUI.Controllers.Parameters
         }
 
         // GET: PropertyOwner
-        public ActionResult Index()
+        public ActionResult Index(string filter = "")
         {
-            return View(db.PropertyOwnerModels.ToList());
+            var list = mapper.MapperT1toT2(app.GetAllRecords(filter));
+            return View(list);
         }
 
         // GET: PropertyOwner/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(long id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PropertyOwnerModel propertyOwnerModel = db.PropertyOwnerModels.Find(id);
+            PropertyOwnerModel propertyOwnerModel = mapper.MapperT1toT2(app.GetRecord(id));
             if (propertyOwnerModel == null)
             {
                 return HttpNotFound();
@@ -61,8 +55,8 @@ namespace AirUdC.GUI.Controllers.Parameters
         {
             if (ModelState.IsValid)
             {
-                db.PropertyOwnerModels.Add(propertyOwnerModel);
-                db.SaveChanges();
+                PropertyOwnerDTO propertyOwnerDTO = mapper.MapperT2toT1(propertyOwnerModel);
+                app.CreateRecord(propertyOwnerDTO);
                 return RedirectToAction("Index");
             }
 
@@ -70,13 +64,13 @@ namespace AirUdC.GUI.Controllers.Parameters
         }
 
         // GET: PropertyOwner/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(long id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PropertyOwnerModel propertyOwnerModel = db.PropertyOwnerModels.Find(id);
+            PropertyOwnerModel propertyOwnerModel = mapper.MapperT1toT2(app.GetRecord(id));
             if (propertyOwnerModel == null)
             {
                 return HttpNotFound();
@@ -93,21 +87,21 @@ namespace AirUdC.GUI.Controllers.Parameters
         {
             if (ModelState.IsValid)
             {
-                db.Entry(propertyOwnerModel).State = EntityState.Modified;
-                db.SaveChanges();
+                PropertyOwnerDTO propertyOwnerDTO = mapper.MapperT2toT1(propertyOwnerModel);
+                app.UpdateRecord(propertyOwnerDTO);
                 return RedirectToAction("Index");
             }
             return View(propertyOwnerModel);
         }
 
         // GET: PropertyOwner/Delete/5
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(long id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PropertyOwnerModel propertyOwnerModel = db.PropertyOwnerModels.Find(id);
+            PropertyOwnerModel propertyOwnerModel = mapper.MapperT1toT2(app.GetRecord(id));
             if (propertyOwnerModel == null)
             {
                 return HttpNotFound();
@@ -120,19 +114,8 @@ namespace AirUdC.GUI.Controllers.Parameters
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            PropertyOwnerModel propertyOwnerModel = db.PropertyOwnerModels.Find(id);
-            db.PropertyOwnerModels.Remove(propertyOwnerModel);
-            db.SaveChanges();
+            app.DeleteRecord(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

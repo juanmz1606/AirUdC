@@ -37,6 +37,8 @@ namespace AirUdC.GUI.App_Start
             container.Register<ICountryInfrastructure, CountryImplementationInfrastructure>(Lifestyle.Scoped);
             container.Register<ICityApplication, CityImplementationApplication>(Lifestyle.Scoped);
             container.Register<ICountryApplication, CountryImplementationApplication>(Lifestyle.Scoped);
+            container.Register<IPropertyOwnerInfrastructure, PropertyOwnerImplementationInfrastructure>(Lifestyle.Scoped);
+            container.Register<IPropertyOwnerApplication, PropertyOwnerImplementationApplication>(Lifestyle.Scoped);
             container.RegisterMvcControllers();
         }
     }
