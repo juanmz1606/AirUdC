@@ -34,5 +34,7 @@ namespace AirUdC.Infrastructure.Implementation.DataModel
         public virtual DbSet<PropertyMultimedia> PropertyMultimedia { get; set; }
         public virtual DbSet<PropertyOwner> PropertyOwner { get; set; }
         public virtual DbSet<Reservation> Reservation { get; set; }
+
+        public System.Data.Entity.DbSet<AirUdC.GUI.Models.Parameters.PropertyOwnerModel> PropertyOwnerModels { get; set; }
     }
 }

@@ -48,7 +48,4 @@ namespace AirUdC.GUI.Mappers.Parameters
             }
         }
     }
-    {
-
-    }
 }

@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Parameters\CityController.cs" />
     <Compile Include="Controllers\Parameters\CountryController.cs" />
+    <Compile Include="Controllers\Parameters\PropertyOwnerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -335,6 +336,11 @@
     <Content Include="Views\City\Details.cshtml" />
     <Content Include="Views\City\Edit.cshtml" />
     <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\PropertyOwner\Create.cshtml" />
+    <Content Include="Views\PropertyOwner\Delete.cshtml" />
+    <Content Include="Views\PropertyOwner\Details.cshtml" />
+    <Content Include="Views\PropertyOwner\Edit.cshtml" />
+    <Content Include="Views\PropertyOwner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
