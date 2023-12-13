@@ -56,7 +56,7 @@ namespace AirUdC.Application.Implementation.Implementation.Parameters
         {
             CityMapperApplication mapper = new CityMapperApplication();
             IEnumerable<CityDbModel> records = 
-                this._cityInfrastructure.GetAllRecordsByCountryId(countryId);
+                    this._cityInfrastructure.GetAllRecordsByCountryId(countryId);
             return mapper.MapperT1toT2(records);
         }
         /// <summary>

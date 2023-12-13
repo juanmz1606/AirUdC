@@ -1,6 +1,5 @@
 ﻿using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.GUI.Models.Parameters;
-using AirUdC.Infastructure.Contracts.DbModel.Parameters;
 using System.Collections.Generic;
 
 namespace AirUdC.GUI.Mappers.Parameters

@@ -45,11 +45,13 @@
     <Compile Include="Contracts\Parameters\ICountryInfrastructure.cs" />
     <Compile Include="Contracts\Parameters\ICustomerInfrastructure.cs" />
     <Compile Include="Contracts\Parameters\IMultimediaTypeInfrastructure.cs" />
+    <Compile Include="Contracts\Parameters\IPropertyInfrastructure.cs" />
     <Compile Include="Contracts\Parameters\IPropertyOwnerInfrastructure.cs" />
     <Compile Include="DbModel\Parameters\CityDbModel.cs" />
     <Compile Include="DbModel\Parameters\CountryDbModel.cs" />
     <Compile Include="DbModel\Parameters\CustomerDbModel.cs" />
     <Compile Include="DbModel\Parameters\MultimediaTypeDbModel.cs" />
+    <Compile Include="DbModel\Parameters\PropertyDbModel.cs" />
     <Compile Include="DbModel\Parameters\PropertyOwnerDbModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -218,6 +218,7 @@
     <Compile Include="Mappers\Parameters\CustomerMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\MultimediaTypeMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperGUI.cs" />
+    <Compile Include="Mappers\Parameters\PropertyMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\PropertyOwnerMapperGUI.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Parameters\CityModel.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\Parameters\CountryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Parameters\Property_Model.cs" />
     <Compile Include="Models\Parameters\PropertyOwnerModel.cs" />
     <Compile Include="Models\ReportModels\CitiesByCountryReportModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
