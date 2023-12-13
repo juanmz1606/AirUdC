@@ -209,6 +209,7 @@
     <Compile Include="Controllers\Parameters\CountryController.cs" />
     <Compile Include="Controllers\Parameters\CustomerController.cs" />
     <Compile Include="Controllers\Parameters\MultimediaTypeController.cs" />
+    <Compile Include="Controllers\Parameters\PropertyController.cs" />
     <Compile Include="Controllers\Parameters\PropertyOwnerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -359,6 +360,11 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Property\Create.cshtml" />
+    <Content Include="Views\Property\Delete.cshtml" />
+    <Content Include="Views\Property\Details.cshtml" />
+    <Content Include="Views\Property\Edit.cshtml" />
+    <Content Include="Views\Property\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
