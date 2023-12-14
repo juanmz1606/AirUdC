@@ -22,7 +22,6 @@ namespace AirUdC.GUI.Models.Parameters
         [DisplayName("Precio")]
         [Required(ErrorMessage = "El precio es requerido")]
         [Range(0.01, 1000000, ErrorMessage = "El precio debe estar entre 0.01 y 1,000,000")]
-        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "El precio debe tener hasta dos decimales")]
         public decimal Price { get; set; }
 
         [DisplayName("Latitud")]
@@ -49,18 +48,12 @@ namespace AirUdC.GUI.Models.Parameters
         public string Details { get; set; }
 
         [DisplayName("Mascotas")]
-        [Required(ErrorMessage = "Este campo es requerido")]
-        [Range(typeof(bool), "false", "true", ErrorMessage = "Por favor, escribe un valor válido")]
         public bool Pets { get; set; }
 
         [DisplayName("Congelador")]
-        [Required(ErrorMessage = "Este campo es requerido")]
-        [Range(typeof(bool), "false", "true", ErrorMessage = "Por favor, escribe un valor válido")]
         public bool Freezer { get; set; }
 
         [DisplayName("Servicio de lavandería")]
-        [Required(ErrorMessage = "Este campo es requerido")]
-        [Range(typeof(bool), "false", "true", ErrorMessage = "Por favor, escribe un valor válido")]
         public bool LaundryService { get; set; }
 
         [Required]

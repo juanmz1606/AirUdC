@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Migrations.Model;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using AirUdC.Application.Contracts.Contracts.Parameters;
+﻿using AirUdC.Application.Contracts.Contracts.Parameters;
 using AirUdC.Application.Contracts.DTO.Parameters;
 using AirUdC.Application.Implementation.Mappers.Parameters;
 using AirUdC.GUI.Mappers.Parameters;
-using AirUdC.GUI.Models;
 using AirUdC.GUI.Models.Parameters;
 using AirUdC.Infastructure.Contracts.DbModel.Parameters;
-using AirUdC.Infrastructure.Implementation.DataModel;
+using System.Data.Entity.Migrations.Model;
+using System.EnterpriseServices;
+using System.Net;
+using System.Web.Mvc;
 
 namespace AirUdC.GUI.Controllers.Parameters
 {
@@ -79,14 +72,17 @@ namespace AirUdC.GUI.Controllers.Parameters
         [ValidateAntiForgeryToken]
         public ActionResult Create(Property_Model propertyModel)
         {
-            ModelState.Remove("Country.Name");
+            ModelState.Remove("City.Name");
+            ModelState.Remove("PropertyOwner.FirstName");
+            ModelState.Remove("PropertyOwner.FamilyName");
+            ModelState.Remove("PropertyOwner.Email");
+            ModelState.Remove("PropertyOwner.Cellphone");
             if (ModelState.IsValid)
             {
                 PropertyDTO propertyDTO = mapper.MapperT2toT1(propertyModel);
                 app.CreateRecord(propertyDTO);
                 return RedirectToAction("Index");
             }
-
             return View(propertyModel);
         }
 
@@ -115,6 +111,9 @@ namespace AirUdC.GUI.Controllers.Parameters
         {
             ModelState.Remove("City.Name");
             ModelState.Remove("PropertyOwner.FirstName");
+            ModelState.Remove("PropertyOwner.FamilyName");
+            ModelState.Remove("PropertyOwner.Email");
+            ModelState.Remove("PropertyOwner.Cellphone");
             if (ModelState.IsValid)
             {
                 PropertyDTO propertyDTO = mapper.MapperT2toT1(property_Model);

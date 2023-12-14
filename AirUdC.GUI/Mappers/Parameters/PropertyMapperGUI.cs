@@ -58,7 +58,7 @@ namespace AirUdC.GUI.Mappers.Parameters
                 Pets = input.Pets,
                 Freezer = input.Freezer,
                 LaundryService = input.LaundryService,
-                City = cityMapper.MapperT2toT1(input.City),
+                City = cityMapper.MapperT2toT1WhitoutCountry(input.City),
                 PropertyOwner = propertyOwnerMapper.MapperT2toT1(input.PropertyOwner)
             };
         }

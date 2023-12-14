@@ -37,6 +37,17 @@ namespace AirUdC.Application.Implementation.Mappers.Parameters
             };
         }
 
+        public CityDTO MapperT2toT1WhitoutCountry(CityModel input)
+        {
+            CountryMapperGUI countryMapper = new CountryMapperGUI();
+            return new CityDTO()
+            {
+                Id = input.Id,
+                Name = input.Name,
+                Country = new CountryDTO()
+            };
+        }
+
         public override IEnumerable<CityDTO> MapperT2toT1(IEnumerable<CityModel> input)
         {
             foreach (var item in input)
